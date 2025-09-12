@@ -1,47 +1,120 @@
+:root {
+    --board-bg: #1a1a2e;
+    --cell-bg: #16213e;
+    --x-color: #0f3460;
+    --o-color: #e94560;
+    --text-color: #dcdcdc;
+    --container-bg: #1f2847;
+}
+
 body {
-    font-family: sans-serif;
+    font-family: 'Poppins', sans-serif;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    min-height: 100vh;
+    background-color: var(--board-bg);
+    color: var(--text-color);
+    margin: 0;
+}
+
+.container {
+    background-color: var(--container-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+h1 {
+    margin-top: 0;
+    font-weight: 600;
+    font-size: 2.5rem;
+    color: #fff;
 }
 
 #game-board {
     display: grid;
     grid-template-columns: repeat(3, 100px);
     grid-template-rows: repeat(3, 100px);
-    gap: 5px;
-    margin: 20px 0;
+    gap: 10px;
+    margin: 2rem 0;
 }
 
 .cell {
     width: 100px;
     height: 100px;
-    background-color: #eee;
-    border: 1px solid #ccc;
+    background-color: var(--cell-bg);
+    border: none;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2em;
+    font-size: 5rem;
+    font-weight: bold;
     cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.cell.x::before {
-    content: 'X';
-    color: blue;
+.cell:hover {
+    background-color: #2a395a;
+    transform: translateY(-3px);
 }
 
-.cell.o::before {
-    content: 'O';
-    color: red;
+.cell.x {
+    color: var(--x-color);
+}
+
+.cell.o {
+    color: var(--o-color);
+}
+
+/* Remove ::before pseudo-elements and apply styles directly */
+.cell.x::before, .cell.o::before {
+    content: none;
+}
+
+.cell.x,
+.cell.o {
+    cursor: not-allowed;
 }
 
 #status {
-    margin-bottom: 10px;
-    font-size: 1.2em;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    min-height: 2.2rem;
 }
 
-#restart-button {
-    padding: 10px 20px;
-    font-size: 1em;
+.button-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+#restart-button, #mute-button {
+    background-color: #e94560;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
     cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#restart-button:hover, #mute-button:hover {
+    background-color: #c73049;
+    transform: translateY(-2px);
+}
+
+#mute-button {
+    background-color: #0f3460;
+}
+
+#mute-button:hover {
+    background-color: #0a2240;
 }

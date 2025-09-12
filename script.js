@@ -41,6 +41,7 @@ function handleCellClick(e) {
     }
 
     boardState[cellIndex] = currentPlayer;
+    cell.textContent = currentPlayer;
     cell.classList.add(currentPlayer.toLowerCase());
     playSound(placeSound);
 
@@ -73,6 +74,7 @@ function checkWin() {
 function restartGame() {
     boardState.fill(null);
     cells.forEach(cell => {
+        cell.textContent = '';
         cell.classList.remove('x');
         cell.classList.remove('o');
     });
